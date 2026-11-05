@@ -1,0 +1,48 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{martimath-index}[2026/11/05 v1.0 Índexs opcionals]
+\RequirePackage{hyperref}
+% Els hipervincles interns dels índexs són negres, també en mode color.
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=mmblue}
+\makeatletter
+% pgfpages retarda els \write fins al següent full físic. Fixem el
+% número de pàgina lògica en escriure els índexs, no en fer el shipout.
+\newcommand{\mmFixTwoUpToc}{%
+  \patchcmd{\addcontentsline}{\thepage}{\number\value{page}}{}%
+    {\PackageWarning{martimath-index}{No s'ha pogut ajustar la numeració dels índexs en mode two-up}}%
+}
+\newif\ifmmTwoUpForIndex
+\ExplSyntaxOn
+\bool_if:NT \g_mm_twoup_bool {\mmTwoUpForIndextrue}
+\ExplSyntaxOff
+\ifmmTwoUpForIndex\mmFixTwoUpToc\fi
+\newcommand{\mm@addresulttoindex}[2]{%
+  \phantomsection
+  \addcontentsline{lor}{result}{\protect\textbf{#1:}\if\relax\detokenize{#2}\relax\else\space[#2]\fi}%
+}
+% A diferència d'una entrada de secció, un resultat no rep espai extra.
+\newcommand*\l@result{\@dottedtocline{1}{0em}{0em}}
+\newcommand*\mm@indexheading[1]{%
+  \par\addvspace{0.7\baselineskip}%
+  {\noindent\normalfont\bfseries\normalsize\color{black}%
+   \MakeUppercase{#1}\par}%
+  \nobreak\vspace{2pt}%
+}
+\renewcommand{\tableofcontents}{%
+  \begingroup
+    \setlength{\parskip}{0pt}%
+    \mm@indexheading{\contentsname}%
+    \small
+    \@starttoc{toc}%
+  \endgroup
+}
+\newcommand{\indexresultats}{%
+  \begingroup
+    \setlength{\parskip}{0pt}%
+    \mm@indexheading{Índex de resultats}%
+    \small
+    \@starttoc{lor}%
+  \endgroup
+}
+\let\llistaresultats\indexresultats
+\makeatother
+\endinput

@@ -1,0 +1,136 @@
+\documentclass[a4paper]{article}
+\usepackage{martimath}
+\usepackage{fancyvrb}
+\usepackage{longtable,array}
+\title{martimath 1.0\\\large Manual d'ús}
+\author{Martí Carrasco}
+\date{Novembre de 2026}
+\begin{document}
+\maketitle
+
+\section{Instal·lació i primer document}
+Descomprimeix l'arxiu ZIP i deixa els cinc fitxers amb extensió
+\texttt{.sty} a la mateixa carpeta del document. La manera més directa
+de començar és obrir \texttt{plantilla.tex} i compilar-la amb
+\texttt{pdflatex}. Per als índexs, fes dues compilacions.
+
+\begin{Verbatim}[fontsize=\small]
+\documentclass[a4paper]{article}
+\usepackage{martimath} % 12 pt per defecte
+\title{Estructures Algebraiques}
+\author{Martí Carrasco}
+\begin{document}
+\maketitle
+\section{Anells}
+\begin{definicio}[Ideal]
+Sigui $A$ un anell...
+\end{definicio}
+\end{document}
+\end{Verbatim}
+
+La tipografia és \emph{Computer Modern original}, sense substitució.
+El text principal té 12 pt per defecte; per canviar-lo, escriu
+\texttt{\string\usepackage[fontsize=11pt]\{martimath\}} al preàmbul.
+Per defecte hi ha marges d'1,5 cm, seccions vermelles de 14 pt en
+majúscules, subseccions vermelles de 12 pt, subsubseccions negres
+de 11 pt i paginació a la dreta.
+
+\section{Definicions, teoremes i altres resultats}
+Els entorns disponibles són els següents:
+
+\begin{center}
+\begin{tabular}{>{\ttfamily}l l}
+\hline
+definicio & Def: \\
+proposicio, prop & Prop: \\
+observacio, obs & Obs: \\
+teorema, teo & Teorema: \\
+lema & Lema: \\
+corollari, cor & Cor: \\
+exemple & Exemple: \\
+comentari & Comentari: \\
+demostracio, dem & Dem: i quadrat final \\
+\hline
+\end{tabular}
+\end{center}
+
+El primer claudàtor, si hi és, conté un nom opcional; el segon
+controla el disseny: \texttt{inline} (predeterminat),
+\texttt{separat}, \texttt{important} i \texttt{index=false}.
+
+\Needspace{15\baselineskip}
+\begin{Verbatim}[fontsize=\small]
+\begin{prop}
+Enunciat sense subtítol.
+\end{prop}
+
+\begin{teo}[Nom del teorema][important,separat]
+Enunciat amb línia vertical.
+\begin{dem}
+Demostració dins del teorema.
+\end{dem}
+\end{teo}
+\end{Verbatim}
+
+La demostració pot anar dins o després de l'entorn: en tots dos casos
+la barra vertical acaba amb l'enunciat. Una demostració llarga es pot
+repartir entre pàgines; els enunciats es protegeixen de talls inadequats.
+
+\section{Comandes curtes i opcions globals}
+Per a resultats breus, pots escriure \texttt{\string\defi},
+\texttt{\string\propi}, \texttt{\string\obsi},
+\texttt{\string\teoi}, \texttt{\string\lemai},
+\texttt{\string\cori}, \texttt{\string\exi} i
+\texttt{\string\comi}. Admeten els mateixos arguments opcionals.
+
+\begin{Verbatim}[fontsize=\small]
+\propi[Ideals principals]{Tot ideal principal
+    és generat per un sol element.}
+\defi{Una definició molt breu.}
+\end{Verbatim}
+
+\texttt{\string\def} és una primitiva de TeX: per això no es redefineix.
+La comanda curta per a les definicions és \texttt{\string\defi}.
+
+\begin{Verbatim}[fontsize=\small]
+\usepackage[fontsize=12pt,mode=normal,
+            spacing=normal,colors=true]{martimath}
+\usepackage[mode=print]{martimath}
+\usepackage[mode=two-up]{martimath}
+\end{Verbatim}
+
+\texttt{mode=print} elimina els colors; \texttt{colors=false} fa el
+mateix. \texttt{spacing} accepta \texttt{compact}, \texttt{normal}
+i \texttt{relaxed}. El valor de \texttt{fontsize} (per defecte 12 pt)
+controla la mida del text principal; per exemple, \texttt{10pt} o
+\texttt{11pt}, sense canviar la tipografia Computer Modern.
+
+\texttt{mode=two-up} compon dues pàgines A5 verticals de lletra real
+12 pt sobre cada full A4 horitzontal, sense reduir-les. Fa servir marges
+laterals d'1 cm en cada A5. Per combinar-ho amb el blanc i negre, escriu
+\texttt{\string\usepackage[mode=print,twoup=true]\{martimath\}}.
+
+\section{Índexs, figures i fórmules}
+Per inserir l'índex general, escriu \texttt{\string\tableofcontents}.
+
+Per inserir el de resultats, escriu \texttt{\string\indexresultats}.
+
+Tots dos índexs són compactes i negres, però tenen enllaços clicables.
+No es crea numeració de resultats.
+Si un resultat no ha d'entrar a l'índex, usa \texttt{index=false}.
+
+\begin{Verbatim}[fontsize=\small]
+\imatge[0.65\linewidth]{dibuix.png}[Llegenda opcional]
+
+\begin{grafica}[xmin=-2,xmax=2,ymin=-2,ymax=4]
+\plotfuncion[color=mmblue]{x^2-1}
+\plotfuncion[color=black,dashed]{x+0.2}
+\end{grafica}
+\end{Verbatim}
+
+També tens disponibles \texttt{graphicx}, \texttt{tikz},
+\texttt{pgfplots} i \texttt{tikz-cd}. Les fórmules
+\verb|\[...\]| no es numeren; si vols una equació numerada,
+utilitza l'entorn estàndard \texttt{equation}.
+
+\end{document}

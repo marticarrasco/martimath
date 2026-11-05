@@ -1,0 +1,20 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{martimath-figures}[2026/11/05 v1.0 Imatges i gràfiques]
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{tikz-cd}
+\pgfplotsset{compat=1.18}
+\NewDocumentCommand{\imatge}{O{0.8\linewidth} m o}{%
+  \begin{center}\includegraphics[width=#1]{#2}%
+  \IfValueT{#3}{\par\smallskip{\footnotesize #3}}\end{center}%
+}
+\NewDocumentEnvironment{grafica}{O{}}{%
+  \begin{center}\begin{tikzpicture}\begin{axis}[
+    width=0.55\linewidth,height=5cm,axis lines=middle,
+    tick label style={font=\scriptsize},#1]%
+}{%
+  \end{axis}\end{tikzpicture}\end{center}%
+}
+\NewDocumentCommand{\plotfuncion}{O{} m}{\addplot[domain=-2:2,samples=120,thick,#1]{#2};}
+\endinput

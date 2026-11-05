@@ -1,0 +1,36 @@
+%% martimath v1.0 — Estil personal per a apunts de matemàtiques
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{martimath}[2026/11/05 v1.0 Apunts matemàtics de Martí Carrasco]
+\RequirePackage{expl3}
+\RequirePackage{xparse}
+\RequirePackage{l3keys2e}
+\ExplSyntaxOn
+\tl_new:N \g_mm_mode_tl
+\tl_new:N \g_mm_spacing_tl
+\tl_new:N \g_mm_fontsize_tl
+\bool_new:N \g_mm_colors_bool
+\bool_new:N \g_mm_twoup_bool
+\tl_gset:Nn \g_mm_mode_tl {normal}
+\tl_gset:Nn \g_mm_spacing_tl {normal}
+\tl_gset:Nn \g_mm_fontsize_tl {12pt}
+\bool_gset_true:N \g_mm_colors_bool
+\bool_gset_false:N \g_mm_twoup_bool
+\keys_define:nn {martimath}
+ {
+  mode .choices:nn = {normal,print,two-up} {\tl_gset:Nx \g_mm_mode_tl {\l_keys_choice_tl}},
+  twoup .bool_gset:N = \g_mm_twoup_bool,
+  spacing .choices:nn = {compact,normal,relaxed} {\tl_gset:Nx \g_mm_spacing_tl {\l_keys_choice_tl}},
+  fontsize .tl_gset:N = \g_mm_fontsize_tl,
+  colors .bool_gset:N = \g_mm_colors_bool,
+ }
+\ProcessKeysOptions{martimath}
+\tl_if_eq:VnT \g_mm_mode_tl {print}{\bool_gset_false:N \g_mm_colors_bool}
+\tl_if_eq:VnT \g_mm_mode_tl {two-up}{\bool_gset_true:N \g_mm_twoup_bool}
+\exp_args:Nx \PassOptionsToPackage {fontsize=\tl_use:N \g_mm_fontsize_tl}{fontsize}
+\ExplSyntaxOff
+\RequirePackage{fontsize}
+\RequirePackage{martimath-layout}
+\RequirePackage{martimath-index}
+\RequirePackage{martimath-environments}
+\RequirePackage{martimath-figures}
+\endinput

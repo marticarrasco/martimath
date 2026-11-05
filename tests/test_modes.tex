@@ -1,0 +1,22 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[fontsize=10pt,mode=print,spacing=compact,colors=false]{martimath}
+\makeatletter\AtBeginDocument{\typeout{MARTIMATH-TEST-SIZE=\f@size}}\makeatother
+\begin{document}
+\section{Prova en mode d'impressió}
+\subsection{Sense noms i comandes curtes}
+\defi{Tot anell té una estructura additiva.}
+\obsi[][separat]{Aquesta observació no té títol.}
+\propi[Un ideal][important]{Si $I$ és un ideal, $I+I=I$.}
+\begin{teorema}[][important]
+Un enunciat important sense subtítol.
+\begin{demostracio}
+Una demostració dins del bloc important.
+\end{demostracio}
+\end{teorema}
+\teoi[Un resultat][important,separat]{Un enunciat per a una comanda curta.}
+\begin{dem}Una prova separada.\end{dem}
+\begin{lema}[Sense índex][index=false]
+No ha d'aparèixer a l'índex.
+\end{lema}
+\indexresultats
+\end{document}

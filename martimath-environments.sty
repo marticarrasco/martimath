@@ -1,0 +1,113 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{martimath-environments}[2026/11/05 v1.0 Resultats matemàtics]
+\RequirePackage{xparse}
+\RequirePackage{mdframed}
+\RequirePackage{etoolbox}
+\RequirePackage{needspace}
+\ExplSyntaxOn
+\bool_new:N \l_mm_important_bool
+\bool_new:N \l_mm_frame_open_bool
+\bool_new:N \l_mm_index_bool
+\tl_new:N \l_mm_format_tl
+\tl_new:N \l_mm_name_tl
+\keys_define:nn {martimath/result}
+ {
+  inline .code:n = {\tl_set:Nn \l_mm_format_tl {inline}},
+  separat .code:n = {\tl_set:Nn \l_mm_format_tl {separat}},
+  separated .meta:n = {separat},
+  important .bool_set:N = \l_mm_important_bool,
+  important .default:n = true,
+  index .bool_set:N = \l_mm_index_bool,
+  index .default:n = true,
+ }
+\cs_new_protected:Npn \mm_close_frame_for_proof:
+ {
+  \bool_if:NT \l_mm_frame_open_bool
+    {\par\end{mdframed}\bool_set_false:N \l_mm_frame_open_bool}
+ }
+\cs_new_protected:Npn \mm_begin_result:nnn #1#2#3
+ {
+  \bool_set_false:N \l_mm_important_bool
+  \bool_set_false:N \l_mm_frame_open_bool
+  \bool_set_true:N \l_mm_index_bool
+  \tl_set:Nn \l_mm_format_tl {inline}
+  \tl_clear:N \l_mm_name_tl
+  \IfNoValueF{#2}{\tl_set:Nn \l_mm_name_tl {#2}}
+  \IfNoValueF{#3}{\keys_set:nn {martimath/result}{#3}}
+  \par\Needspace{3\baselineskip}\addvspace{\mmResultGap}
+  \bool_if:NT \l_mm_index_bool
+    {\exp_args:NnV \mm@addresulttoindex {#1}\l_mm_name_tl}
+  \bool_if:NT \l_mm_important_bool
+    {
+      \begin{mdframed}[
+        linecolor=mmblue,linewidth=2pt,topline=false,
+        bottomline=false,rightline=false,leftline=true,
+        leftmargin=0pt,rightmargin=0pt,
+        innerleftmargin=10pt,innerrightmargin=0pt,
+        innertopmargin=3pt,innerbottommargin=3pt,
+        skipabove=0pt,skipbelow=0pt,
+        splitbottomskip=3pt,splittopskip=3pt]
+      \bool_set_true:N \l_mm_frame_open_bool
+    }
+  \noindent\textcolor{mmblue}{{\bfseries #1:}%
+    \tl_if_empty:NF \l_mm_name_tl {\space[\tl_use:N \l_mm_name_tl]}}
+  \tl_if_eq:VnTF \l_mm_format_tl {separat}
+    {\par\nobreak\vspace{1pt}\noindent\ignorespaces}
+    {\nobreak\hspace{0.28em}\ignorespaces}
+ }
+\cs_new_protected:Npn \mm_end_result:
+ {
+  \par
+  \bool_if:NT \l_mm_frame_open_bool
+    {\end{mdframed}\bool_set_false:N \l_mm_frame_open_bool}
+  \par\addvspace{\mmResultGap}
+ }
+% El prehook s'executa abans de crear el grup de la demostració.
+\BeforeBeginEnvironment{demostracio}{\mm_close_frame_for_proof:}
+\BeforeBeginEnvironment{dem}{\mm_close_frame_for_proof:}
+\NewDocumentEnvironment{demostracio}{}
+ {\par\addvspace{\mmProofGap}\noindent\textbf{Dem:}\nobreak\space\ignorespaces}
+ {\unskip\nobreak\hspace{0.5em}\hfill$\square$\par\addvspace{\mmProofGap}}
+\NewDocumentEnvironment{dem}{}
+ {\begin{demostracio}}
+ {\end{demostracio}}
+\cs_new_protected:Npn \mm_define_result:nn #1#2
+ {
+  \NewDocumentEnvironment{#1}{o o}
+    {\mm_begin_result:nnn {#2}{##1}{##2}}
+    {\mm_end_result:}
+ }
+\mm_define_result:nn {definicio}{Def}
+\mm_define_result:nn {proposicio}{Prop}
+\mm_define_result:nn {prop}{Prop}
+\mm_define_result:nn {observacio}{Obs}
+\mm_define_result:nn {obs}{Obs}
+\mm_define_result:nn {teorema}{Teorema}
+\mm_define_result:nn {teo}{Teorema}
+\mm_define_result:nn {lema}{Lema}
+\mm_define_result:nn {corollari}{Cor}
+\mm_define_result:nn {cor}{Cor}
+\mm_define_result:nn {exemple}{Exemple}
+\mm_define_result:nn {comentari}{Comentari}
+% Comandes curtes; \def és una primitiva i no es modifica.
+\cs_new_protected:Npn \mm_define_command:nn #1#2
+ {
+  \exp_args:Nc \NewDocumentCommand {#1} {o o +m}
+    {
+      \group_begin:
+      \mm_begin_result:nnn {#2}{##1}{##2}
+      ##3
+      \mm_end_result:
+      \group_end:
+    }
+ }
+\mm_define_command:nn {defi}{Def}
+\mm_define_command:nn {propi}{Prop}
+\mm_define_command:nn {obsi}{Obs}
+\mm_define_command:nn {teoi}{Teorema}
+\mm_define_command:nn {lemai}{Lema}
+\mm_define_command:nn {cori}{Cor}
+\mm_define_command:nn {exi}{Exemple}
+\mm_define_command:nn {comi}{Comentari}
+\ExplSyntaxOff
+\endinput

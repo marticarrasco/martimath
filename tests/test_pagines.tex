@@ -1,0 +1,22 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[spacing=relaxed]{martimath}
+\begin{document}
+\section{Resultat llarg i salts de pàgina}
+\begin{teo}[Resultat molt llarg][important,separat]
+Enunciat llarg que pot passar d'una pàgina a una altra sense
+forçar una caixa indivisible.
+\newcount\comptador
+\comptador=0
+\loop\ifnum\comptador<60
+\par Sigui $A$ un anell commutatiu, $I\subseteq A$ un ideal i
+$f:A\to A/I$ la projecció canònica. Considerem una propietat
+algebraica que requereix diverses línies i pot ocupar espai.
+\advance\comptador by1
+\repeat
+\begin{dem}
+La demostració comença després de l'enunciat i no està
+acompanyada per la barra de color. L'argument es pot continuar
+en una altra pàgina sense forçar cap caixa.
+\end{dem}
+\end{teo}
+\end{document}

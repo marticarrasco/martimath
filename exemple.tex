@@ -1,0 +1,84 @@
+\documentclass[a4paper]{article}
+\usepackage{martimath}
+\title{Estructures Algebraiques}
+\author{Martí Carrasco}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\indexresultats
+\clearpage
+
+\section{Anells i ideals}
+\subsection{Anell quocient}
+
+\begin{definicio}[Ideal]
+Sigui $A$ un anell commutatiu. Un subconjunt $I\subseteq A$
+és un ideal si és un subgrup additiu i $ax\in I$ per a tot
+$a\in A$ i $x\in I$.
+\end{definicio}
+
+\begin{definicio}[Anell quocient][separat]
+Sigui $I$ un ideal de $A$. El conjunt $A/I$ de classes
+d'equivalència té una estructura natural d'anell definida per
+\[
+\overline a+\overline b=\overline{a+b},\qquad
+\overline a\,\overline b=\overline{ab}.
+\]
+\end{definicio}
+
+\begin{obs}[][separat]
+La projecció canònica $\pi:A\to A/I$ és un morfisme
+exhaustiu amb nucli $I$.
+\end{obs}
+
+\begin{teo}[Primer teorema d'isomorfisme][important,separat]
+Sigui $f:A\to B$ un morfisme d'anells. Aleshores,
+\[
+A/\ker f\cong\operatorname{Im} f.
+\]
+\begin{dem}
+Definim $\overline f(\overline a)=f(a)$.
+Si $\overline a=\overline b$, aleshores $a-b\in\ker f$,
+i per tant $f(a)=f(b)$. L'aplicació induïda és bijectiva.
+\end{dem}
+\end{teo}
+
+\propi[Ideals principals]{Si $a\in A$, el conjunt
+$(a)=\{ra:r\in A\}$ és un ideal de $A$.}
+
+\begin{exemple}[Els enters mòdul $6$][separat]
+En $\mathbb Z/6\mathbb Z$ tenim
+\[
+\overline 2\,\overline 4=\overline 2,\qquad
+\overline 3+\overline 5=\overline 2.
+\]
+\end{exemple}
+
+\subsubsection{Una propietat útil}
+
+\begin{lema}[Nucli additiu]
+El nucli d'un morfisme d'anells és un subgrup additiu.
+\end{lema}
+\begin{demostracio}
+Com que tot morfisme d'anells és additiu, el seu nucli
+és un subgrup del grup additiu corresponent.
+\end{demostracio}
+
+\begin{cor}[Conseqüència]
+El nucli d'un morfisme d'anells commutatius és un ideal.
+\end{cor}
+
+\begin{comentari}
+Els títols són opcionals; per defecte el text és en línia.
+\end{comentari}
+
+\section{Figures i gràfiques}
+\begin{grafica}[xmin=-2.2,xmax=2.2,ymin=-1.5,ymax=3.4]
+\plotfuncion[color=mmblue]{x^2-1}
+\plotfuncion[color=black,dashed]{x+0.2}
+\end{grafica}
+\begin{center}\footnotesize Gràfica generada amb \texttt{pgfplots}.\end{center}
+
+\end{document}

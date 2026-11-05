@@ -1,0 +1,27 @@
+\documentclass[a4paper]{article}
+\usepackage[mode=two-up]{martimath}
+\title{Prova de dues pàgines per full}
+\author{Martí Carrasco}
+\begin{document}
+\makeatletter
+\typeout{MARTIMATH-TWOUP-FONTSIZE=\f@size}
+\makeatother
+\typeout{MARTIMATH-TWOUP-LOGICALWIDTH=\the\paperwidth}
+\typeout{MARTIMATH-TWOUP-START=\thepage}
+\maketitle
+\tableofcontents
+\indexresultats
+\typeout{MARTIMATH-TWOUP-BEFORECLEAR=\thepage}
+\clearpage
+\typeout{MARTIMATH-TWOUP-AFTERCLEAR=\thepage}
+\section{Primera secció}
+\typeout{MARTIMATH-TWOUP-SECTIONONE=\thepage}
+\begin{definicio}[Exemple]
+Una definició senzilla.
+\end{definicio}
+\newpage
+\typeout{MARTIMATH-TWOUP-AFTERNEW=\thepage}
+\section{Segona secció}
+\typeout{MARTIMATH-TWOUP-SECTIONTWO=\thepage}
+Text.
+\end{document}

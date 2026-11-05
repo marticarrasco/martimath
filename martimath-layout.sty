@@ -1,0 +1,67 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{martimath-layout}[2026/11/05 v1.0 Disseny de pàgina]
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{microtype}
+\RequirePackage{needspace}
+\RequirePackage{etoolbox}
+\RequirePackage[provide=*,catalan]{babel}
+% No es carrega cap paquet de fonts: Computer Modern original de LaTeX.
+\ExplSyntaxOn
+\bool_if:NTF \g_mm_twoup_bool
+ {\geometry{a5paper,left=1cm,right=1cm,top=1.1cm,bottom=1.3cm,headheight=0pt,headsep=0pt,footskip=0.7cm}}
+ {\geometry{a4paper,margin=1.5cm,headheight=0pt,headsep=0pt,footskip=0.8cm}}
+\ExplSyntaxOff
+% Dues pàgines A5 verticals al costat, en un únic A4 horitzontal.
+% No s'encongeix cap pàgina A4: el contingut es compon directament en A5.
+\newcommand{\mmEnableTwoUpLayout}{%
+  \RequirePackage{pgfpages}%
+  \pgfpagesuselayout{2 on 1}[a4paper,landscape]% 
+}
+\ExplSyntaxOn
+\bool_if:NT \g_mm_twoup_bool {\mmEnableTwoUpLayout}
+\ExplSyntaxOff
+\definecolor{mmblue}{HTML}{486681}
+\definecolor{mmred}{HTML}{A34A4E}
+\ExplSyntaxOn
+\bool_if:NF \g_mm_colors_bool
+ {\colorlet{mmblue}{black}\colorlet{mmred}{black}}
+\ExplSyntaxOff
+\titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{\MakeUppercase}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{14.5}\selectfont\color{mmred}}{\thesubsection}{0.65em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\normalsize\color{black}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.725ex plus 0.3ex}{0.825ex}
+\titlespacing*{\subsection}{0pt}{1.275ex}{0.525ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.4ex}
+\pretocmd{\subsubsection}{\Needspace{4\baselineskip}}{}{}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\setlength{\parindent}{0pt}
+\newlength{\mmResultGap}
+\newlength{\mmProofGap}
+\ExplSyntaxOn
+\tl_if_eq:VnTF \g_mm_spacing_tl {compact}
+ {\setlength{\parskip}{2.8pt plus 1pt}\setlength{\mmResultGap}{4.5pt}\setlength{\mmProofGap}{3pt}}
+ {
+  \tl_if_eq:VnTF \g_mm_spacing_tl {relaxed}
+   {\setlength{\parskip}{7pt plus 2pt}\setlength{\mmResultGap}{11pt}\setlength{\mmProofGap}{7pt}}
+   {\setlength{\parskip}{4.5pt plus 1.5pt}\setlength{\mmResultGap}{7pt}\setlength{\mmProofGap}{5pt}}
+ }
+\ExplSyntaxOff
+\setlength{\abovedisplayskip}{7.5pt}
+\setlength{\belowdisplayskip}{7.5pt}
+\setlength{\abovedisplayshortskip}{3.75pt}
+\setlength{\belowdisplayshortskip}{7.5pt}
+\setlist{itemsep=2pt,topsep=4pt,parsep=0pt,partopsep=0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[R]{\thepage}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
+\endinput
