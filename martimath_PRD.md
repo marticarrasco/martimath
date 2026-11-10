@@ -52,21 +52,22 @@ No s'han d'afegir aquestes funcions sense una petició posterior.
 | Marges normals | 1,5 cm |
 | Mida de lletra | 12 pt per defecte; configurable amb `fontsize=...` |
 | Font | Computer Modern original, sense `lmodern` ni substitucions |
-| Color de seccions i subseccions | Vermell apagat `mmred = #A34A4E` |
-| Seccions | Numerades, majúscules automàtiques, negreta, 14 pt |
-| Subseccions | Numerades, negreta, 12 pt |
+| Color de seccions i subseccions | Vermell fort `mmred = #C00000` |
+| Seccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 14 pt |
+| Subseccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 12 pt |
 | Subsubseccions | Negres, discretes, sense número |
-| Títols de resultats | Blau `mmblue = #486681` |
-| Etiquetes `Def:`, `Obs:`, etc. | Blau i **negreta**; el nom opcional és blau normal |
+| Títols de resultats | Vermell fort `mmred = #C00000` |
+| Etiquetes `Def:`, `Obs:`, etc. | Vermell fort i **negreta**; el nom opcional és vermell normal |
 | Cos dels resultats | Lletra normal (sense cursiva automàtica) |
 | Resultats matemàtics | **Sense numeració** |
 | Accent d'importància | Barra vertical blava **només quan s'indica** |
 | Barra i demostració | La barra arriba només a l'enunciat, **mai** a `Dem:` |
+| Demostracions | Text en mida petita i blau `mmblue`; `Dem:` en negreta i quadrat final |
 | Capçalera | Cap |
 | Peu | Número de pàgina alineat a la dreta |
 | Equacions | Sense número amb `\[...\]`; amb número quan s'usa `equation` |
 | Separació | Equilibrada; una mica més aire al voltant de les equacions i sobretot entre resultats consecutius |
-| Índexs | Compactes i negres, encara que els resultats siguin blaus |
+| Índexs | Compactes i negres, encara que els resultats siguin vermells |
 
 **Important per a Codex:** aquesta taula recull l'objectiu visual. A `11. Limitacions i punts a comprovar` s'anota una diferència menor detectada entre documentació i implementació del tercer nivell de seccions.
 
@@ -291,7 +292,7 @@ En canvis futurs cal inspeccionar els PDF, no només comprovar el codi de retorn
 
 1. El document de prova normal continua compilant i manté la identitat visual.
 2. No es renumeren els resultats i no s'introdueix cursiva al cos dels teoremes.
-3. Les etiquetes segueixen en negreta blava i els índexs continuen negres.
+3. Les etiquetes segueixen en vermell fort i negreta; els índexs continuen negres.
 4. La barra `important` no arriba a la demostració.
 5. Els modes normal, print i two-up continuen funcionant.
 6. La font Computer Modern original es manté i el two-up no redueix la lletra base.

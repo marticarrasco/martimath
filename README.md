@@ -19,15 +19,15 @@ ho requereix. Pots consultar la ruta personal exacta amb `kpsewhich -var-value=T
 
 - Computer Modern **original** (no es carrega `lmodern`, `fontspec`, etc.).
 - A4, **12 pt predeterminats** (configurables amb `fontsize` al paquet), marges d'1,5 cm.
-- Seccions: vermell apagat, negreta, 14 pt, majúscules automàtiques.
-- Subseccions: vermell, negreta, 12 pt.
+- Seccions: vermell fort (`#C00000`), negreta, 14 pt; es conserva l'ús de majúscules i minúscules escrit per l'autor.
+- Subseccions: vermell fort, negreta, 12 pt; també es conserva la capitalització escrita.
 - Subsubseccions: negre, negreta, 11 pt, sense número.
 - Definicions i resultats: etiqueta (`Def:`, `Obs:`, `Prop:`, etc.) en
-  **negreta blava**, nom opcional en blau normal i cos en lletra normal;
+  **negreta vermella**, nom opcional en vermell normal i cos en lletra normal;
   sense numeració.
 - Peu de pàgina: número a la dreta; sense capçalera.
 - Equacions no numerades amb `\[...\]` i numerades si s'usa `equation`.
-- Demostracions: `Dem:` en negre i quadrat de final.
+- Demostracions: text més petit i blau; `Dem:` en negreta i quadrat final.
 
 ## Entorns: sintaxi
 

@@ -27,12 +27,12 @@
 \bool_if:NT \g_mm_twoup_bool {\mmEnableTwoUpLayout}
 \ExplSyntaxOff
 \definecolor{mmblue}{HTML}{486681}
-\definecolor{mmred}{HTML}{A34A4E}
+\definecolor{mmred}{HTML}{C00000}
 \ExplSyntaxOn
 \bool_if:NF \g_mm_colors_bool
  {\colorlet{mmblue}{black}\colorlet{mmred}{black}}
 \ExplSyntaxOff
-\titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{\MakeUppercase}
+\titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{}
 \titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{14.5}\selectfont\color{mmred}}{\thesubsection}{0.65em}{}
 \titleformat{\subsubsection}{\normalfont\bfseries\normalsize\color{black}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{1.725ex plus 0.3ex}{0.825ex}

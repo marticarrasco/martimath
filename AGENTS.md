@@ -13,12 +13,12 @@ Aquest projecte és una biblioteca LaTeX personal per als apunts de matemàtique
 - Català per defecte; Computer Modern **original**.
 - Mida base predeterminada de 12 pt, configurable al preàmbul.
 - Sense numeració de definicions, teoremes, proposicions, observacions, lemes, corol·laris ni exemples.
-- Etiquetes dels resultats blaves i en negreta, amb `:` final; nom opcional blau normal.
+- Etiquetes dels resultats vermell fort i en negreta, amb `:` final; nom opcional vermell fort normal.
 - Cos dels resultats en lletra normal.
-- Seccions i subseccions vermelles; subsubseccions discretes, negres i sense número.
+- Seccions, subseccions i etiquetes de resultats vermell fort; subsubseccions discretes, negres i sense número.
 - Índex general i de resultats compactes i negres.
 - Barra vertical només amb `important` i mai sobre la demostració.
-- `Dem:` en negreta i quadrat final.
+- Demostracions en mida petita i blaves; `Dem:` en negreta i quadrat final.
 - Peu amb número a la dreta; sense capçalera.
 - `mode=two-up`: dos A5 verticals per A4 horitzontal, sense reduir la font.
 - No redefinir mai la primitiva TeX `\def`; la comanda curta és `\defi`.
