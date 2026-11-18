@@ -57,6 +57,7 @@ No s'han d'afegir aquestes funcions sense una petició posterior.
 | Seccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 14 pt |
 | Subseccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 12 pt |
 | Subsubseccions | Negres, discretes, sense número |
+| Salts de pàgina dels títols | Es reserva espai perquè els encapçalaments no quedin orfes al peu de pàgina |
 | Títols de resultats | Vermell fort `mmred = #C00000` |
 | Etiquetes `Def:`, `Obs:`, etc. | Vermell fort i **negreta**; el nom opcional és vermell normal |
 | Cos dels resultats | Lletra normal (sense cursiva automàtica) |

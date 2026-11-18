@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.2 Disseny de pàgina]
+\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.3 Disseny de pàgina]
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{titlesec}
@@ -60,6 +60,9 @@
 \titlespacing*{\section}{0pt}{1.725ex plus 0.3ex}{0.825ex}
 \titlespacing*{\subsection}{0pt}{1.275ex}{0.525ex}
 \titlespacing*{\subsubsection}{0pt}{1ex}{0.4ex}
+% Avoid orphaned headings: reserve room for each heading and its opening text.
+\pretocmd{\section}{\Needspace{6\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
 \pretocmd{\subsubsection}{\Needspace{4\baselineskip}}{}{}
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}

@@ -1,4 +1,4 @@
-# martimath 1.0.2
+# martimath 1.0.3
 
 Paquet personal de LaTeX per als apunts matemàtics de Martí Carrasco.
 
@@ -24,7 +24,7 @@ la base de dades de TeX Live i crear `dist/martimath-v<versió>.zip`.
 Per preparar i publicar una versió nova, executa:
 
 ~~~powershell
-.\release.ps1 -Version 1.0.2 -Publish
+.\release.ps1 -Version 1.0.3 -Publish
 ~~~
 
 L'opció `-Publish` mostra els canvis pendents i demana escriure el tag per
@@ -42,6 +42,7 @@ inclou tots els canvis no ignorats del repo.
 - Seccions: vermell fort (`#C00000`), negreta, 14 pt; es conserva l'ús de majúscules i minúscules escrit per l'autor.
 - Subseccions: vermell fort, negreta, 12 pt; també es conserva la capitalització escrita.
 - Subsubseccions: negre, negreta, 11 pt, sense número.
+- Els títols de secció es mantenen amb prou espai per no quedar sols al peu de pàgina.
 - Definicions i resultats: etiqueta (`Def:`, `Obs:`, `Prop:`, etc.) en
   **negreta vermella**, nom opcional en vermell normal i cos en lletra normal;
   sense numeració.
