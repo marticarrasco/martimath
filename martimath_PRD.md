@@ -63,6 +63,7 @@ No s'han d'afegir aquestes funcions sense una petició posterior.
 | Accent d'importància | Barra vertical blava **només quan s'indica** |
 | Barra i demostració | La barra arriba només a l'enunciat, **mai** a `Dem:` |
 | Demostracions | Text en mida petita i blau `mmblue`; `Dem:` en negreta i quadrat final |
+| Èmfasi amb `\emph{...}` | Blau clàssic de LaTeX; negre quan es desactiven els colors |
 | Capçalera | Cap |
 | Peu | Número de pàgina alineat a la dreta |
 | Equacions | Sense número amb `\[...\]`; amb número quan s'usa `equation` |
@@ -308,7 +309,7 @@ En canvis futurs cal inspeccionar els PDF, no només comprovar el codi de retorn
 3. **Demostracions imbricades:** el disseny actual pressuposa una sola demostració a dins de cada resultat, situada preferiblement al final. La barra es tanca abans de la demostració; no hi ha mecanisme per reobrir-la després.
 4. **Fonts matemàtiques molt petites:** en algunes compilacions PDF s'han observat substitucions puntuals de mides òptiques inferiors a les disponibles per a Computer Modern; no s'ha substituït la família tipogràfica general.
 5. **Comportament en documents extensos:** cal continuar provant salts de pàgina, equacions llargues, índexs grans i imatges grosses, especialment en A5.
-6. **Publicació i instal·lació:** encara no s'ha definit un procés de releases, versions semàntiques, CI o instal·lació automatitzada a TeX Live/GitHub.
+6. **Publicació i instal·lació:** `release.ps1` permet instal·lar els cinc fitxers `.sty` al `TEXMFHOME` de TeX Live. Amb `-Version x.y.z -Publish`, actualitza les metadades de versió, crea el ZIP, instal·la el paquet, fa push de `main` i del tag, i publica el release de GitHub. No hi ha CI.
 
 ## 12. Com continuar amb Codex
 

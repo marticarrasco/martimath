@@ -1,4 +1,4 @@
-# martimath 1.0
+# martimath 1.0.1
 
 Paquet personal de LaTeX per als apunts matemàtics de Martí Carrasco.
 
@@ -15,6 +15,24 @@ Per instal·lar-lo globalment a TeX Live, copia els `.sty` a
 `TEXMFHOME/tex/latex/martimath/` i executa `mktexlsr` si la instal·lació
 ho requereix. Pots consultar la ruta personal exacta amb `kpsewhich -var-value=TEXMFHOME`.
 
+## Instal·lació i publicació des de Windows
+
+Des del directori del repo, executa `.\release.ps1` per instal·lar la versió
+actual dels cinc fitxers `.sty` a `TEXMFHOME/tex/latex/martimath/`, actualitzar
+la base de dades de TeX Live i crear `dist/martimath-v<versió>.zip`.
+
+Per preparar i publicar una versió nova, executa:
+
+~~~powershell
+.\release.ps1 -Version 1.0.1 -Publish
+~~~
+
+L'opció `-Publish` mostra els canvis pendents i demana escriure el tag per
+confirmar. Després actualitza la versió als cinc fitxers `.sty`, crea un commit,
+instal·la els fitxers localment, crea i puja el tag i publica el ZIP com a asset
+del release de GitHub. Revisa la llista de canvis abans de confirmar: el commit
+inclou tots els canvis no ignorats del repo.
+
 ## Estil predeterminat
 
 - Computer Modern **original** (no es carrega `lmodern`, `fontspec`, etc.).
@@ -28,6 +46,8 @@ ho requereix. Pots consultar la ruta personal exacta amb `kpsewhich -var-value=T
 - Peu de pàgina: número a la dreta; sense capçalera.
 - Equacions no numerades amb `\[...\]` i numerades si s'usa `equation`.
 - Demostracions: text més petit i blau; `Dem:` en negreta i quadrat final.
+- `\emph{...}`: manté el format d'èmfasi de LaTeX i posa el text en blau clàssic;
+  amb `colors=false` o `mode=print`, apareix en negre.
 
 ## Entorns: sintaxi
 

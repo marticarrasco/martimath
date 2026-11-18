@@ -36,4 +36,4 @@ Aquest projecte és una biblioteca LaTeX personal per als apunts de matemàtique
 
 ## Estat tècnic
 
-El projecte és funcional però encara no té repositori Git propi ni una pipeline de release. La distribució actual és un ZIP amb cinc fitxers `.sty`, plantilla, exemples, proves i documentació.
+El projecte és funcional i viu al repo GitHub `marticarrasco/martimath`. `release.ps1` automatitza la instal·lació personal a TeX Live i, quan s'invoca amb `-Version x.y.z -Publish`, crea i publica el ZIP de release.

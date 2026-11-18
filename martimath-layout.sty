@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{martimath-layout}[2026/11/05 v1.0 Disseny de pàgina]
+\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.1 Disseny de pàgina]
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{titlesec}
@@ -28,10 +28,14 @@
 \ExplSyntaxOff
 \definecolor{mmblue}{HTML}{486681}
 \definecolor{mmred}{HTML}{C00000}
+\colorlet{mmemphblue}{blue}
 \ExplSyntaxOn
 \bool_if:NF \g_mm_colors_bool
- {\colorlet{mmblue}{black}\colorlet{mmred}{black}}
+ {\colorlet{mmblue}{black}\colorlet{mmred}{black}\colorlet{mmemphblue}{black}}
 \ExplSyntaxOff
+% Keep LaTeX's emphasis shape switching, adding the classic blue color.
+\let\mmOriginalEmph\emph
+\renewcommand{\emph}[1]{{\color{mmemphblue}\mmOriginalEmph{#1}}}
 \titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{}
 \titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{14.5}\selectfont\color{mmred}}{\thesubsection}{0.65em}{}
 \titleformat{\subsubsection}{\normalfont\bfseries\normalsize\color{black}}{}{0pt}{}
