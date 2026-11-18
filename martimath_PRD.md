@@ -52,7 +52,7 @@ No s'han d'afegir aquestes funcions sense una petició posterior.
 | Marges normals | 1,5 cm |
 | Mida de lletra | 12 pt per defecte; configurable amb `fontsize=...` |
 | Font | Computer Modern original, sense `lmodern` ni substitucions |
-| Títol del document | A l'esquerra, `\Large` i negreta; autor i data a sota |
+| Títol del document | A l'esquerra, `\Large` i negreta; autor i data opcionals, sense espai buit si falten |
 | Color de seccions i subseccions | Vermell fort `mmred = #C00000` |
 | Seccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 14 pt |
 | Subseccions | Numerades, respecten les majúscules i minúscules escrites per l'autor, negreta, 12 pt |

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.3 Disseny de pàgina]
+\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.4 Disseny de pàgina]
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{titlesec}
@@ -38,20 +38,37 @@
 \renewcommand{\emph}[1]{{\color{mmemphblue}\mmOriginalEmph{#1}}}
 % Document title: left-aligned, Large and bold, like the package's standard heading.
 \makeatletter
+% The article class defaults to today's date; in these notes, date is opt-in.
+\def\mm@defaultdate{\today}
+\ifx\@date\mm@defaultdate
+  \date{}
+\fi
 \renewcommand{\@maketitle}{%
   \newpage\null
   \vskip 2em
-  \begin{flushleft}
+  \begingroup
+    \raggedright
     \let\footnote\thanks
     {\Large\bfseries\@title\par}%
-    \vskip 1.5em
-    {\large
-      \lineskip .5em
-      \begin{tabular}[t]{l}\@author\end{tabular}\par}%
-    \vskip 1em
-    {\large \@date\par}%
-  \end{flushleft}
-  \par
+    \ifx\@author\@empty
+      \ifx\@date\@empty
+      \else
+        \vskip 1.5em
+        {\large \@date\par}%
+      \fi
+    \else
+      \vskip 1.5em
+      {\large
+        \lineskip .5em
+        \begin{tabular}[t]{l}\@author\end{tabular}\par}%
+      \ifx\@date\@empty
+      \else
+        \vskip 1em
+        {\large \@date\par}%
+      \fi
+    \fi
+    \par
+  \endgroup
   \vskip 1.5em}
 \makeatother
 \titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{}
