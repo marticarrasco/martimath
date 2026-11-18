@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.1 Disseny de pàgina]
+\ProvidesPackage{martimath-layout}[2026/11/18 v1.0.2 Disseny de pàgina]
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{titlesec}
@@ -36,6 +36,24 @@
 % Keep LaTeX's emphasis shape switching, adding the classic blue color.
 \let\mmOriginalEmph\emph
 \renewcommand{\emph}[1]{{\color{mmemphblue}\mmOriginalEmph{#1}}}
+% Document title: left-aligned, Large and bold, like the package's standard heading.
+\makeatletter
+\renewcommand{\@maketitle}{%
+  \newpage\null
+  \vskip 2em
+  \begin{flushleft}
+    \let\footnote\thanks
+    {\Large\bfseries\@title\par}%
+    \vskip 1.5em
+    {\large
+      \lineskip .5em
+      \begin{tabular}[t]{l}\@author\end{tabular}\par}%
+    \vskip 1em
+    {\large \@date\par}%
+  \end{flushleft}
+  \par
+  \vskip 1.5em}
+\makeatother
 \titleformat{\section}{\normalfont\bfseries\fontsize{14}{17}\selectfont\color{mmred}}{\thesection}{0.65em}{}
 \titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{14.5}\selectfont\color{mmred}}{\thesubsection}{0.65em}{}
 \titleformat{\subsubsection}{\normalfont\bfseries\normalsize\color{black}}{}{0pt}{}
